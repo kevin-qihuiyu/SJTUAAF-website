@@ -20,31 +20,39 @@
     <body class=" ">
         <div class="nav-container">
             <div class="via-1545081023547" via="via-1545081023547" vio="首页">
+                <!-- nav bar for mobile -->
                 <div class="bar bar--sm visible-xs">
                     <div class="container">
                         <div class="row">
                             <div class="col-3 col-md-2">
-                                <a href="index.html"> <img class="logo logo-dark" alt="logo" src="img-custom/logo/logo-1-dark.png"> <img class="logo logo-light" alt="logo" src="img-custom/logo/logo-1-light.png"> </a>
+                                <a href="home.html"> 
+                                    <img class="logo logo-dark" alt="logo" src="img-custom/logo/logo-1-dark.png"> 
+                                </a>
                             </div>
                             <div class="col-9 col-md-10 text-right">
-                                <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i class="icon icon--sm stack-interface stack-menu"></i> </a>
+                                <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> 
+                                    <i class="icon icon--sm stack-interface stack-menu"></i> </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <nav id="menu1" class="bar bar-1 hidden-xs">
+                <!-- nav bar for larger screen -->
+                <!-- <nav id="menu1" class="bar bar-1 hidden-xs"> -->
+                <nav id="menu1" class="bar bar-1 hidden-xs ">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-1 col-md-2 hidden-xs">
                                 <div class="bar__module">
-                                    <a href="index.html"> <img class="logo logo-dark" alt="logo" src="img-custom/logo/logo-1-dark.png"> <img class="logo logo-light" alt="logo" src="img-custom/logo/logo-1-light.png"> </a>
+                                    <a href="home.html"> 
+                                        <img class="logo" alt="logo" src="img-custom/logo/logo-1-dark.png"> 
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-lg-11 col-md-12 text-right text-left-xs text-left-sm">
                                 <div class="bar__module">
                                     <ul class="menu-horizontal text-left">
                                         <li> <a href="home.html">首页&nbsp; &nbsp;</a> </li>
-                                        <li> <a href="family-list.html">家庭成员&nbsp;&nbsp;</a> </li>
+                                        <li> <a href="#">家庭成员&nbsp;&nbsp;</a> </li>
                                         <li> <a href="blog-articles-list.html">博客</a> </li>
                                         <li>
                                             <a href="#"> </a>
@@ -55,7 +63,7 @@
                                                     <div class="row">
                                                         <div class="dropdown__content col-lg-2">
                                                             <ul class="menu-vertical">
-                                                                <li> <a href="#">Single Link</a> </li>
+                                                                <li> <a href="#">关于交大校友会</a> </li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -75,85 +83,143 @@
             </div>
         </div>
         <div class="main-container">
+            <div id="start"></div>
+            <section class="text-center height-50">
+                <div class="container pos-vertical-center">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h1>交大家庭</h1>
+                            <p class="lead">
+                                从2015年到现在，交大法国校友会已经组建了10个由资深校友，青年校友和新生校友组成的家庭。
+                            </p>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
             <section class="space--sm">
                 <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-10 col-lg-8">
-                            <div class="masonry masonry-blog-list">
-                                <div class="masonry-filter-container text-center d-flex justify-content-center align-items-center">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="masonry">
+                                <!-- <div class="masonry-filter-container d-flex align-items-center">
                                     <span>Category:</span>
                                     <div class="masonry-filter-holder">
                                         <div class="masonry__filters" data-filter-all-text="All Categories"></div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <hr>
-                                <div class="masonry__container">
-                                    <article class="masonry__item" data-masonry-filter="校友会活动">
-                                        <div class="article__title text-center">
-                                            <a href="blog/blog-post-3.html">
-                                                <h2>2018年法国校友会Parrainage活动日暨迎新活动举行 </h2>
+                                <div class="masonry__container row">
+                                    <div class="masonry__item col-lg-4 col-md-6" data-masonry-filter="Marketing">
+                                        <article class="feature feature-1">
+                                            <a href="#" class="block">
+                                                <img alt="Image" src="img-custom/family/family-1.jpg" />
                                             </a>
-                                            <span>2018 年 10 月 27 日 在 </span>
-                                            <span>
-                                                <a href="#">Web Design</a>
-                                            </span>
-                                        </div>
-                                        <!--end article title-->
-                                        <div class="article__body">
-                                            <a href="#">
-                                                <img alt="Image" src="img-custom/blog/article3-1.jpg" />
+                                            <div class="feature__body boxed boxed--border">
+                                                <h5>骄大佳苑</h5>
+                                                <p>
+                                                    成立于：2015年<br><br>
+                                                    资深家长：徐微苑<br>
+                                                    活跃成员：黄小伟，余启辉，乐向楠，吕志浩，俞昊波<br>
+                                                </p>
+                                                <a href="#">
+                                                    详细信息
+                                                </a>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="masonry__item col-lg-4 col-md-6" data-masonry-filter="Marketing">
+                                        <article class="feature feature-1">
+                                            <a href="#" class="block">
+                                                <img alt="Image" src="img-custom/family/family-2.jpg" />
                                             </a>
-                                            <p>
-                                                10月14日，上海交通大学法国校友会工作组筹备三月之久的Parrainage活动日在Chamarande庄园成功举办。10多位刚到法国的交大新人与30多名各自忙碌的家庭成员共聚一堂。                                            </p>
-                                            <a href="blog/blog-post-3.html">继续阅读 &raquo;</a>
-                                        </div>
-                                    </article>
-                                    <!--end item-->
-                                    <article class="masonry__item" data-masonry-filter="Announcements">
-                                        <div class="article__title text-center">
-                                            <a href="blog/blog-post-2.html">
-                                                <h2>2016年四十多位交大留法新生找到了家庭</h2>
+                                            <div class="feature__body boxed boxed--border">
+                                                <h5>维他命C</h5>
+                                                <p>
+                                                    成立于：2015年<br><br>
+                                                    资深家长：Paul Huang<br>
+                                                    活跃成员：刘玮，任硕，<br>
+                                                </p>
+                                                <a href="#">
+                                                    详细信息
+                                                </a>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="masonry__item col-lg-4 col-md-6" data-masonry-filter="Marketing">
+                                        <article class="feature feature-1">
+                                            <a href="#" class="block">
+                                                <img alt="Image" src="img-custom/family/family-3.jpg" />
                                             </a>
-                                            <span>2016 年 10 月 12 日 在 </span>
-                                            <span>
-                                                <a href="#">Web Design</a>
-                                            </span>
-                                        </div>
-                                        <!--end article title-->
-                                        <div class="article__body">
-                                            <a href="#">
-                                                <img alt="Image" src="img-custom/blog/article2-1.jpg" />
+                                            <div class="feature__body boxed boxed--border">
+                                                <h5>LV之家</h5>
+                                                <p>
+                                                    成立于：2015年<br><br>
+                                                    资深家长：李天伦<br>
+                                                    活跃成员：刘玮，任硕，成员2，成员3，成员4<br>
+                                                </p>
+                                                <a href="#">
+                                                    详细信息
+                                                </a>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="masonry__item col-lg-4 col-md-6" data-masonry-filter="Marketing">
+                                        <article class="feature feature-1">
+                                            <a href="#" class="block">
+                                                <img alt="Image" src="img-custom/family/family-4.jpg" />
                                             </a>
-                                            <p>
-                                                10月1日，上海交大法国校友会2016 年Parrainage迎新会在巴黎大学城顺利举行。四十多位新到法国的上海交大校友加入了法国校友会大家庭。 
-                                                迎新会上，法国校友会秘书长黄小伟热烈欢迎新生到来，并对法国校友会和“小家庭(Parrainage)”项目进行了介绍。“小家庭(Parrainage)”项目借鉴了法国传统工程师学校的Parrainage传统，将在法校友分成几个小“家庭”，每个“家庭”皆由来法较早的资深校友做“家长”，在法一段时间的年轻校友作为联络人，和几位初来法国的校友作为“家庭成员”组成一棵“家庭树”，用家的温暖共同帮助新校友融入法国生活。
-                                            </p>
-                                            <a href="blog/blog-post-2.html">继续阅读 &raquo;</a>
-                                        </div>
-                                    </article>
-                                    <!--end item-->
-                                    <article class="masonry__item" data-masonry-filter="Education">
-                                        <div class="article__title text-center">
-                                            <a href="blog/blog-post-1.html">
-                                                <h2>2015年迎新活动成立第一批交大法国家庭</h2>
+                                            <div class="feature__body boxed boxed--border">
+                                                <h5>蕴华居</h5>
+                                                <p>
+                                                    成立于：2015年<br><br>
+                                                    资深家长：姜蕴华<br>
+                                                    活跃成员：白雪，成员2，成员3，成员4<br>
+                                                </p>
+                                                <a href="#">
+                                                    详细信息
+                                                </a>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="masonry__item col-lg-4 col-md-6" data-masonry-filter="Marketing">
+                                        <article class="feature feature-1">
+                                            <a href="#" class="block">
+                                                <img alt="Image" src="img-custom/family/family-5.jpg" />
                                             </a>
-                                            <span>2015 年 10 月 29 日 在 </span>
-                                            <span>
-                                                <a href="#">Education</a>
-                                            </span>
-                                        </div>
-                                        <!--end article title-->
-                                        <div class="article__body">
-                                            <a href="#">
-                                                <img alt="Image" src="img-custom/blog/article1-1.jpg" />
+                                            <div class="feature__body boxed boxed--border">
+                                                <h5>鄢华园</h5>
+                                                <p>
+                                                    成立于：2015年<br><br>
+                                                    资深家长：嫣小华<br>
+                                                    活跃成员：成员2，成员3，成员4，成员2，成员3，成员4<br>
+                                                </p>
+                                                <a href="#">
+                                                    详细信息
+                                                </a>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="masonry__item col-lg-4 col-md-6" data-masonry-filter="Marketing">
+                                        <article class="feature feature-1">
+                                            <a href="#" class="block">
+                                                <img alt="Image" src="img-custom/family/family-6.jpg" />
                                             </a>
-                                            <p>
-                                                10月18日，上海交大法国校友会在巴黎大学城（Cité Universitaire）举办迎新活动，欢迎2015年到达法国继续学习深造的上海交通大学新同学。新同学大多就读于工程师学校，如巴黎综合理工，巴黎电信，Agro Paristech等。其中，上海交大巴黎高科卓越工程师学院的同学今年已经来到法国继续深造，随着项目的进一步深化合作，将会有更多的交大校友来到法国进行学习和工作。
-                                            </p>
-                                            <a href="blog/blog-post-1.html">继续阅读 &raquo;</a>
-                                        </div>
-                                    </article>
-                                    <!--end item-->
+                                            <div class="feature__body boxed boxed--border">
+                                                <h5>金粉世家</h5>
+                                                <p>
+                                                    成立于：2015年<br><br>
+                                                    资深家长：家长名字<br>
+                                                    活跃成员：成员2，成员3，成员4，成员2，成员3，成员4<br>
+                                                </p>
+                                                <a href="#">
+                                                    详细信息
+                                                </a>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    
                                 </div>
                                 <!--end of masonry container-->
                                 <div class="pagination">
@@ -184,7 +250,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
-                            <img alt="Image" class="logo" src="img-custom/logo/logo-1-dark.png" />
+                            <img alt="Image" class="logo" src="img/logo-dark.png" />
                             <ul class="list-inline list--hover">
                                 <li class="list-inline-item">
                                     <a href="#">
