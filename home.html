@@ -8,6 +8,8 @@
         <link href="css/socicon.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/flickity.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700" rel="stylesheet">
@@ -166,7 +168,7 @@
             <section class="feature-large switchable switchable--switch">
                 <div class="container">
                     <div class="row justify-content-between">
-                        <div class="col-lg-6 col-md-6"> <img alt="Image" class="border--round box-shadow-wide" src="img/inner-5.jpg"> </div>
+                        <div class="col-lg-6 col-md-6"> <img alt="Image" class="border--round box-shadow-wide" src="img-custom/home-2-about-family.jpg"> </div>
                         <div class="col-lg-5 col-md-6">
                             <div class="heading-block">
                                 <h2>关于家庭(Parrainage)机制</h2>
@@ -190,13 +192,48 @@
                             <div class="typed-headline"> <span class="h2 inline-block">在交大校友会家庭里我找到了</span> <span class="h2 inline-block typed-text typed-text--cursor color--primary" data-typed-strings="学长学姐,技术大牛,职场大拿,创业达人,家的温暖,吃喝玩乐,人生方向,家人">showcasing</span> </div>
                         </div>
                     </div>
-                    <div class="row justify-content-center">
-                        <div class="col-md-12 col-lg-10"> <img alt="Image" src="img/ebook-2.png">
+                    <!-- lightbox images-->
+                    <div class="row">
+                        <div class="col">
+                            <div class="slider slider--columns" data-arrows="true" data-paging="true">
+                                <ul class="slides">
+                                    <li class="col-md-4 col-6">
+                                        <a href="img-custom/home-lightbox/lightbox-1.jpg" data-lightbox="Gallery 1">
+                                            <img alt="Image" src="img-custom/home-lightbox/lightbox-1.jpg" />
+                                        </a>
+                                    </li>
+                                    <li class="col-md-4 col-6">
+                                        <a href="img-custom/home-lightbox/lightbox-2.jpg" data-lightbox="Gallery 1">
+                                            <img alt="Image" src="img-custom/home-lightbox/lightbox-2.jpg" />
+                                        </a>
+                                    </li>
+                                    <li class="col-md-4 col-6">
+                                        <a href="img-custom/home-lightbox/lightbox-3.jpg" data-lightbox="Gallery 1">
+                                            <img alt="Image" src="img-custom/home-lightbox/lightbox-3.jpg" />
+                                        </a>
+                                    </li>
+                                    <li class="col-md-4 col-6">
+                                        <a href="img-custom/home-lightbox/lightbox-4.jpg" data-lightbox="Gallery 1">
+                                            <img alt="Image" src="img-custom/home-lightbox/lightbox-4.jpg" />
+                                        </a>
+                                    </li>
+                                    <li class="col-md-4 col-6">
+                                        <a href="img-custom/home-lightbox/lightbox-5.jpg" data-lightbox="Gallery 1">
+                                            <img alt="Image" src="img-custom/home-lightbox/lightbox-5.jpg" />
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
+                        <!--end of col-->
                     </div>
-                </div>
+                    <!--end row-->  
+                    <div class="row">
+                        <p><br><br></p>
+                    </div>
+                </div>       
             </section>
-            <section class="text-center imagebg" data-gradient-bg="#4876BD,#5448BD,#8F48BD,#BD48B1">
+            <section class="text-center imagebg" data-gradient-bg="#4286f4,#FFFFFF,#ff99ad">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-lg-6">
@@ -243,6 +280,8 @@
         <script src="js/typed.min.js"></script>
         <script src="js/granim.min.js"></script>
         <script src="js/smooth-scroll.min.js"></script>
+        <script src="js/flickity.min.js"></script>
+        <script src="js/lightbox.min.js"></script>
         <script src="js/scripts.js"></script>
 
     </body>
