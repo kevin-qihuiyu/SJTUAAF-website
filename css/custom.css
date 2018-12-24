@@ -1,1 +1,8 @@
 /*! Place your custom styles here */
+.hamburger-toggle-white i {
+    color: rgb(240, 240, 240);
+}
+
+.drop-down-gray{
+    background: rgb(189, 189, 189);
+}
