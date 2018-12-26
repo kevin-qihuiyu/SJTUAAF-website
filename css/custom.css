@@ -24,3 +24,13 @@
 .background-image-holder.mobile {
     background-size: 100% !important;
 }
+
+/* The following are used in page family description */
+.profile-img {
+    height: 200px;
+    width: 200px;
+}
+
+.div.text-center {
+    text-align: center;
+}
