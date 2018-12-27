@@ -94,17 +94,19 @@
                             <div class="row">
                                 <div class="boxed boxed--border">
                                     <form class="text-left form-email row" 
-                                    method="POST" data-netlify="true">
+                                    method="POST" data-netlify="true"
+                                    data-error="请正确填写表格。"
+                                    action="join-success.html">
                                         <div class="col-md-12 text-center"><h3>--您的联系方式--</h3></div>
                                         <div class="col-md-6"> <span>您的名字(必填):</span> <input type="text" name="name" class="validate-required"> </div>
-                                        <div class="col-md-6"> <span>您的交大毕业年份</span> <input type="date" name="year" class="validate-required"> </div>
-                                        <div class="col-md-6"> <span>您的当前学校/单位:</span> <input type="text" name="company" class="validate-required"> </div>
-                                        <div class="col-md-6"> <span>您的专业/职业:</span> <input type="text" name="profession" class="validate-required"> </div>
+                                        <div class="col-md-6"> <span>您的交大毕业年份</span> <input type="date" name="year"> </div>
+                                        <div class="col-md-6"> <span>您的当前学校/单位:</span> <input type="text" name="company"> </div>
+                                        <div class="col-md-6"> <span>您的专业/职业:</span> <input type="text" name="profession"> </div>
                                         <div class="col-md-6"> <span>Email 邮件地址(必填):</span> <input type="email" name="email" class="validate-required validate-email"> </div>
-                                        <div class="col-md-6"> <span>电话号码:</span> <input type="tel" name="phone" class="validate-required"> </div>
+                                        <div class="col-md-6"> <span>电话号码:</span> <input type="tel" name="phone"> </div>
                                         
                                         <div class="col-md-12 text-center"><br><h3>--您的法国生活--</h3></div>
-                                        <div class="col-md-6"> <span>您的来法时间</span> <input type="date" name="arrival" class="validate-required"> </div>
+                                        <div class="col-md-6"> <span>您的来法时间</span> <input type="date" name="arrival"> </div>
                                         <div class="col-md-6 form-group">
                                             <label for="stay">您在法国将要逗留的时间</label>
                                             <select class="form-control form-control-lg" id="stay">
@@ -144,7 +146,7 @@
                                             <div class="input-checkbox"> <input type="checkbox" name="gaming"> <label></label> </div>
                                         </div>
                                         <div class="col-md-12"> 
-                                            <span>您平常喜欢做...</span> <textarea rows="3" name="hobby" class="validate-required">
+                                            <span>您平常喜欢做...</span> <textarea rows="3" name="hobby">
                                             </textarea> 
                                         </div>
 
@@ -170,7 +172,7 @@
                                             </select>
                                         </div>
                                         <div class="col-md-12"> 
-                                            <span>您还想对家庭成员说...</span> <textarea rows="3" name="comment" class="validate-required">
+                                            <span>您还想对家庭成员说...</span> <textarea rows="3" name="comment">
                                             </textarea> 
                                         </div>                                      
                                         <div class="col-md-4 col-sm-12 boxed"> 
