@@ -76,3 +76,12 @@ ul.tags li.blue {
         display: block;
     }
 }
+/* 
+.menu-horizontal li a{
+    font-size: 18px;
+} */
+
+
+p + a:not(.btn) {
+    font-size: 1.1em;
+}
