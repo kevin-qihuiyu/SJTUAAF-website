@@ -791,446 +791,446 @@ mr = (function (mr, $, window, document){
 
 //////////////// Forms
 
-mr = (function (mr, $, window, document){
-    "use strict";
+// mr = (function (mr, $, window, document){
+//     "use strict";
     
-    mr.forms                 = mr.forms || {};
-    mr.forms.captcha         = {};
-    mr.forms.captcha.widgets = [];
-    mr.forms.captcha.done    = false;
+//     mr.forms                 = mr.forms || {};
+//     mr.forms.captcha         = {};
+//     mr.forms.captcha.widgets = [];
+//     mr.forms.captcha.done    = false;
 
-    mr.forms.documentReady = function($){
+//     mr.forms.documentReady = function($){
 
-        mr.forms.captcha.widgets = [];
+//         mr.forms.captcha.widgets = [];
 
-        /// Checkbox & Radio Inputs
+//         /// Checkbox & Radio Inputs
 
-        $('.input-checkbox input[type="checkbox"], .input-radio input[type="radio"]').each(function(index){
-            var input = $(this),
-                label = input.siblings('label'),
-                id    = "input-assigned-"+index;
-            if(typeof input.attr('id') === typeof undefined || input.attr('id') === ""){
-                input.attr('id',id);
-                label.attr('for',id);
-            }else{
-                id = input.attr('id');
-                label.attr('for',id);
-            }
-        });
+//         $('.input-checkbox input[type="checkbox"], .input-radio input[type="radio"]').each(function(index){
+//             var input = $(this),
+//                 label = input.siblings('label'),
+//                 id    = "input-assigned-"+index;
+//             if(typeof input.attr('id') === typeof undefined || input.attr('id') === ""){
+//                 input.attr('id',id);
+//                 label.attr('for',id);
+//             }else{
+//                 id = input.attr('id');
+//                 label.attr('for',id);
+//             }
+//         });
 
-        //////////////// Number Inputs
+//         //////////////// Number Inputs
 
-        $('.input-number__controls > span').off('click.mr').on('click.mr',function(){
-            var control = jQuery(this),
-                parent   = control.closest('.input-number'),
-                input    = parent.find('input[type="number"]'),
-                max      = input.attr('max'),
-                min      = input.attr('min'),
-                step     = 1,
-                current  = parseInt(input.val(),10);
+//         $('.input-number__controls > span').off('click.mr').on('click.mr',function(){
+//             var control = jQuery(this),
+//                 parent   = control.closest('.input-number'),
+//                 input    = parent.find('input[type="number"]'),
+//                 max      = input.attr('max'),
+//                 min      = input.attr('min'),
+//                 step     = 1,
+//                 current  = parseInt(input.val(),10);
 
-            if(parent.is('[data-step]')){
-                step = parseInt(parent.attr('data-step'),10);
-            }
+//             if(parent.is('[data-step]')){
+//                 step = parseInt(parent.attr('data-step'),10);
+//             }
 
-            if(control.hasClass('input-number__increase')){
-                if((current+step) <= max){
-                    input.val(current+step);
-                }
-            }else{
-                if((current-step) >= min){
-                    input.val(current-step);
-                }
-            }
-        });
+//             if(control.hasClass('input-number__increase')){
+//                 if((current+step) <= max){
+//                     input.val(current+step);
+//                 }
+//             }else{
+//                 if((current-step) >= min){
+//                     input.val(current-step);
+//                 }
+//             }
+//         });
 
 
-        //////////////// File Uploads
+//         //////////////// File Uploads
 
-        $('.input-file .btn').off('click.mr').on('click.mr',function(){
-            $(this).siblings('input').trigger('click');
-            return false;
-        });
+//         $('.input-file .btn').off('click.mr').on('click.mr',function(){
+//             $(this).siblings('input').trigger('click');
+//             return false;
+//         });
         
-        //////////////// Handle Form Submit
+//         //////////////// Handle Form Submit
 
-        $('form.form-email, form[action*="list-manage.com"], form[action*="createsend.com"]').attr('novalidate', true).off('submit').on('submit', mr.forms.submit);
+//         $('form.form-email, form[action*="list-manage.com"], form[action*="createsend.com"]').attr('novalidate', true).off('submit').on('submit', mr.forms.submit);
 
-        //////////////// Handle Form Submit
-        $(document).on('change, input, paste, keyup', '.attempted-submit .field-error', function(){
-            $(this).removeClass('field-error');
-        });
+//         //////////////// Handle Form Submit
+//         $(document).on('change, input, paste, keyup', '.attempted-submit .field-error', function(){
+//             $(this).removeClass('field-error');
+//         });
 
-         //////////////// Check forms for Google reCaptcha site keys
+//          //////////////// Check forms for Google reCaptcha site keys
 
-        $('form[data-recaptcha-sitekey]:not([data-recaptcha-sitekey=""])').each(function(){
-            var $thisForm    = jQuery(this),
-                $captchaDiv  = $thisForm.find('div.recaptcha'),
-                $insertBefore, $column, widgetObject,  $script, scriptSrc, widgetColourTheme, widgetSize;
+//         $('form[data-recaptcha-sitekey]:not([data-recaptcha-sitekey=""])').each(function(){
+//             var $thisForm    = jQuery(this),
+//                 $captchaDiv  = $thisForm.find('div.recaptcha'),
+//                 $insertBefore, $column, widgetObject,  $script, scriptSrc, widgetColourTheme, widgetSize;
 
-            widgetColourTheme = $thisForm.attr('data-recaptcha-theme');
-            widgetColourTheme = typeof widgetColourTheme !== typeof undefined ? widgetColourTheme : '';
+//             widgetColourTheme = $thisForm.attr('data-recaptcha-theme');
+//             widgetColourTheme = typeof widgetColourTheme !== typeof undefined ? widgetColourTheme : '';
 
-            widgetSize = $thisForm.attr('data-recaptcha-size');
-            widgetSize = typeof widgetSize !== typeof undefined ? widgetSize : '';
+//             widgetSize = $thisForm.attr('data-recaptcha-size');
+//             widgetSize = typeof widgetSize !== typeof undefined ? widgetSize : '';
 
-            // Store the site key for later use
-            mr.forms.captcha.sitekey = $thisForm.attr('data-recaptcha-sitekey');
+//             // Store the site key for later use
+//             mr.forms.captcha.sitekey = $thisForm.attr('data-recaptcha-sitekey');
 
-            if($captchaDiv.length){
-                // If a div.recaptcha was already present on this form, do nothing at this stage,
-                // It will be populated with a captcha widget later.
-            }else{
-                // Create a captcha div and insert it before the submit button.
-                $insertBefore = $thisForm.find('button[type=submit]').closest('[class*="col-"]');
-                $captchaDiv   = jQuery('<div>').addClass('recaptcha');
-                $column       = jQuery('<div>').addClass('col-12').append($captchaDiv);
-                $column.insertBefore($insertBefore);
-            }
+//             if($captchaDiv.length){
+//                 // If a div.recaptcha was already present on this form, do nothing at this stage,
+//                 // It will be populated with a captcha widget later.
+//             }else{
+//                 // Create a captcha div and insert it before the submit button.
+//                 $insertBefore = $thisForm.find('button[type=submit]').closest('[class*="col-"]');
+//                 $captchaDiv   = jQuery('<div>').addClass('recaptcha');
+//                 $column       = jQuery('<div>').addClass('col-12').append($captchaDiv);
+//                 $column.insertBefore($insertBefore);
+//             }
 
        
-            // Add the widget div to the widgets array
-            widgetObject = {
-                element:    $captchaDiv.get(0),
-                parentForm: $thisForm,
-                theme:      widgetColourTheme,
-                size:       widgetSize,
-            };
+//             // Add the widget div to the widgets array
+//             widgetObject = {
+//                 element:    $captchaDiv.get(0),
+//                 parentForm: $thisForm,
+//                 theme:      widgetColourTheme,
+//                 size:       widgetSize,
+//             };
 
           
 
-            mr.forms.captcha.widgets.push(widgetObject);
+//             mr.forms.captcha.widgets.push(widgetObject);
 
-            // mr.forms.captcha.done indicates whether the api script has been appended yet.
-            if(mr.forms.captcha.done === false){
-                if(!jQuery('script[src*="recaptcha/api.js"]').length){
-                    $script   = jQuery('<script async defer>');
-                    scriptSrc = 'https://www.google.com/recaptcha/api.js?onload=mrFormsCaptchaInit&render=explicit';
-                    $script.attr('src', scriptSrc);
-                    jQuery('body').append($script);
-                    mr.forms.captcha.done = true;
-                }
-            }else{
-                if(typeof grecaptcha !== typeof undefined){
-                    mr.forms.captcha.renderWidgets();    
-                }
-            }
+//             // mr.forms.captcha.done indicates whether the api script has been appended yet.
+//             if(mr.forms.captcha.done === false){
+//                 if(!jQuery('script[src*="recaptcha/api.js"]').length){
+//                     $script   = jQuery('<script async defer>');
+//                     scriptSrc = 'https://www.google.com/recaptcha/api.js?onload=mrFormsCaptchaInit&render=explicit';
+//                     $script.attr('src', scriptSrc);
+//                     jQuery('body').append($script);
+//                     mr.forms.captcha.done = true;
+//                 }
+//             }else{
+//                 if(typeof grecaptcha !== typeof undefined){
+//                     mr.forms.captcha.renderWidgets();    
+//                 }
+//             }
 
-        });
+//         });
 
 
-    };
+//     };
     
-    mr.forms.submit = function(e){
-        // return false so form submits through jQuery rather than reloading page.
-        if (e.preventDefault) e.preventDefault();
-        else e.returnValue = false;
+//     mr.forms.submit = function(e){
+//         // return false so form submits through jQuery rather than reloading page.
+//         if (e.preventDefault) e.preventDefault();
+//         else e.returnValue = false;
 
-        var body          = $('body'),
-            thisForm      = $(e.target).closest('form'),
-            formAction    = typeof thisForm.attr('action') !== typeof undefined ? thisForm.attr('action') : "",
-            submitButton  = thisForm.find('button[type="submit"], input[type="submit"]'),
-            error         = 0,
-            originalError = thisForm.attr('original-error'),
-            captchaUsed   = thisForm.find('div.recaptcha').length ? true:false,
-            successRedirect, formError, formSuccess, errorText, successText;
+//         var body          = $('body'),
+//             thisForm      = $(e.target).closest('form'),
+//             formAction    = typeof thisForm.attr('action') !== typeof undefined ? thisForm.attr('action') : "",
+//             submitButton  = thisForm.find('button[type="submit"], input[type="submit"]'),
+//             error         = 0,
+//             originalError = thisForm.attr('original-error'),
+//             captchaUsed   = thisForm.find('div.recaptcha').length ? true:false,
+//             successRedirect, formError, formSuccess, errorText, successText;
 
-        body.find('.form-error, .form-success').remove();
-        submitButton.attr('data-text', submitButton.text());
-        errorText = thisForm.attr('data-error') ? thisForm.attr('data-error') : "Please fill all fields correctly";
-        successText = thisForm.attr('data-success') ? thisForm.attr('data-success') : "Thanks, we'll be in touch shortly";
-        body.append('<div class="form-error" style="display: none;">' + errorText + '</div>');
-        body.append('<div class="form-success" style="display: none;">' + successText + '</div>');
-        formError = body.find('.form-error');
-        formSuccess = body.find('.form-success');
-        thisForm.addClass('attempted-submit');
+//         body.find('.form-error, .form-success').remove();
+//         submitButton.attr('data-text', submitButton.text());
+//         errorText = thisForm.attr('data-error') ? thisForm.attr('data-error') : "Please fill all fields correctly";
+//         successText = thisForm.attr('data-success') ? thisForm.attr('data-success') : "Thanks, we'll be in touch shortly";
+//         body.append('<div class="form-error" style="display: none;">' + errorText + '</div>');
+//         body.append('<div class="form-success" style="display: none;">' + successText + '</div>');
+//         formError = body.find('.form-error');
+//         formSuccess = body.find('.form-success');
+//         thisForm.addClass('attempted-submit');
 
-        // Do this if the form is intended to be submitted to MailChimp or Campaign Monitor
-        if (formAction.indexOf('createsend.com') !== -1 || formAction.indexOf('list-manage.com') !== -1 ) {
+//         // Do this if the form is intended to be submitted to MailChimp or Campaign Monitor
+//         if (formAction.indexOf('createsend.com') !== -1 || formAction.indexOf('list-manage.com') !== -1 ) {
 
-            console.log('Mail list form signup detected.');
-            if (typeof originalError !== typeof undefined && originalError !== false) {
-                formError.html(originalError);
-            }
+//             console.log('Mail list form signup detected.');
+//             if (typeof originalError !== typeof undefined && originalError !== false) {
+//                 formError.html(originalError);
+//             }
             
-            // validateFields returns 1 on error;
-            if (mr.forms.validateFields(thisForm) !== 1) {
+//             // validateFields returns 1 on error;
+//             if (mr.forms.validateFields(thisForm) !== 1) {
                
-                thisForm.removeClass('attempted-submit');
+//                 thisForm.removeClass('attempted-submit');
 
-                // Hide the error if one was shown
-                formError.fadeOut(200);
-                // Create a new loading spinner in the submit button.
-                submitButton.addClass('btn--loading');
+//                 // Hide the error if one was shown
+//                 formError.fadeOut(200);
+//                 // Create a new loading spinner in the submit button.
+//                 submitButton.addClass('btn--loading');
                 
-                try{
-                    $.ajax({
-                        url: thisForm.attr('action'),
-                        crossDomain: true,
-                        data: thisForm.serialize(),
-                        method: "GET",
-                        cache: false,
-                        dataType: 'json',
-                        contentType: 'application/json; charset=utf-8',
-                        success: function(data){
-                            // Request was a success, what was the response?
+//                 try{
+//                     $.ajax({
+//                         url: thisForm.attr('action'),
+//                         crossDomain: true,
+//                         data: thisForm.serialize(),
+//                         method: "GET",
+//                         cache: false,
+//                         dataType: 'json',
+//                         contentType: 'application/json; charset=utf-8',
+//                         success: function(data){
+//                             // Request was a success, what was the response?
 
-                            if (data.result !== "success" && data.Status !== 200) {
+//                             if (data.result !== "success" && data.Status !== 200) {
                                 
-                                // Got an error from Mail Chimp or Campaign Monitor
+//                                 // Got an error from Mail Chimp or Campaign Monitor
 
-                                // Keep the current error text in a data attribute on the form
-                                formError.attr('original-error', formError.text());
-                                // Show the error with the returned error text.
-                                formError.html(data.msg).stop(true).fadeIn(1000);
-                                formSuccess.stop(true).fadeOut(1000);
+//                                 // Keep the current error text in a data attribute on the form
+//                                 formError.attr('original-error', formError.text());
+//                                 // Show the error with the returned error text.
+//                                 formError.html(data.msg).stop(true).fadeIn(1000);
+//                                 formSuccess.stop(true).fadeOut(1000);
 
-                                submitButton.removeClass('btn--loading');
-                            } else {
+//                                 submitButton.removeClass('btn--loading');
+//                             } else {
                                 
-                                // Got success from Mail Chimp or Campaign Monitor
+//                                 // Got success from Mail Chimp or Campaign Monitor
                                 
-                                submitButton.removeClass('btn--loading');
+//                                 submitButton.removeClass('btn--loading');
 
-                                successRedirect = thisForm.attr('data-success-redirect');
-                                // For some browsers, if empty `successRedirect` is undefined; for others,
-                                // `successRedirect` is false.  Check for both.
-                                if (typeof successRedirect !== typeof undefined && successRedirect !== false && successRedirect !== "") {
-                                    window.location = successRedirect;
-                                }else{
-                                    mr.forms.resetForm(thisForm);
-                                    mr.forms.showFormSuccess(formSuccess, formError, 1000, 5000, 500);
-                                }
-                            }
-                        }
-                    });
-                }catch(err){
-                    // Keep the current error text in a data attribute on the form
-                    formError.attr('original-error', formError.text());
-                    // Show the error with the returned error text.
-                    formError.html(err.message);
-                    mr.forms.showFormError(formSuccess, formError, 1000, 5000, 500);
+//                                 successRedirect = thisForm.attr('data-success-redirect');
+//                                 // For some browsers, if empty `successRedirect` is undefined; for others,
+//                                 // `successRedirect` is false.  Check for both.
+//                                 if (typeof successRedirect !== typeof undefined && successRedirect !== false && successRedirect !== "") {
+//                                     window.location = successRedirect;
+//                                 }else{
+//                                     mr.forms.resetForm(thisForm);
+//                                     mr.forms.showFormSuccess(formSuccess, formError, 1000, 5000, 500);
+//                                 }
+//                             }
+//                         }
+//                     });
+//                 }catch(err){
+//                     // Keep the current error text in a data attribute on the form
+//                     formError.attr('original-error', formError.text());
+//                     // Show the error with the returned error text.
+//                     formError.html(err.message);
+//                     mr.forms.showFormError(formSuccess, formError, 1000, 5000, 500);
 
-                    submitButton.removeClass('btn--loading');
-                }
+//                     submitButton.removeClass('btn--loading');
+//                 }
             
 
                 
-            } else {
-                // There was a validation error - show the default form error message
-                mr.forms.showFormError(formSuccess, formError, 1000, 5000, 500);
-            }
-        } else {
-            // If no MailChimp or Campaign Monitor form was detected then this is treated as an email form instead.
-            if (typeof originalError !== typeof undefined && originalError !== false) {
-                formError.text(originalError);
-            }
+//             } else {
+//                 // There was a validation error - show the default form error message
+//                 mr.forms.showFormError(formSuccess, formError, 1000, 5000, 500);
+//             }
+//         } else {
+//             // If no MailChimp or Campaign Monitor form was detected then this is treated as an email form instead.
+//             if (typeof originalError !== typeof undefined && originalError !== false) {
+//                 formError.text(originalError);
+//             }
 
-            error = mr.forms.validateFields(thisForm);
+//             error = mr.forms.validateFields(thisForm);
 
-            if (error === 1) {
-                mr.forms.showFormError(formSuccess, formError, 1000, 5000, 500);
-            } else {
+//             if (error === 1) {
+//                 mr.forms.showFormError(formSuccess, formError, 1000, 5000, 500);
+//             } else {
 
-                thisForm.removeClass('attempted-submit');
+//                 thisForm.removeClass('attempted-submit');
 
-                // Hide the error if one was shown
-                formError.fadeOut(200);
+//                 // Hide the error if one was shown
+//                 formError.fadeOut(200);
                 
-                // Create a new loading spinner in the submit button.
-                submitButton.addClass('btn--loading');
+//                 // Create a new loading spinner in the submit button.
+//                 submitButton.addClass('btn--loading');
 
-                jQuery.ajax({
-                    type: "POST",
-                    url: (formAction !== "" ? formAction : "mail/mail.php"),
-                    data: thisForm.serialize()+"&url="+window.location.href+"&captcha="+captchaUsed,
-                    success: function(response) {
-                        // Swiftmailer always sends back a number representing number of emails sent.
-                        // If this is numeric (not Swift Mailer error text) AND greater than 0 then show success message.
+//                 jQuery.ajax({
+//                     type: "POST",
+//                     url: (formAction !== "" ? formAction : "mail/mail.php"),
+//                     data: thisForm.serialize()+"&url="+window.location.href+"&captcha="+captchaUsed,
+//                     success: function(response) {
+//                         // Swiftmailer always sends back a number representing number of emails sent.
+//                         // If this is numeric (not Swift Mailer error text) AND greater than 0 then show success message.
 
-                        submitButton.removeClass('btn--loading');
+//                         submitButton.removeClass('btn--loading');
 
-                        if ($.isNumeric(response)) {
-                            if (parseInt(response,10) > 0) {
-                                // For some browsers, if empty 'successRedirect' is undefined; for others,
-                                // 'successRedirect' is false.  Check for both.
-                                successRedirect = thisForm.attr('data-success-redirect');
-                                if (typeof successRedirect !== typeof undefined && successRedirect !== false && successRedirect !== "") {
-                                    window.location = successRedirect;
-                                }
+//                         if ($.isNumeric(response)) {
+//                             if (parseInt(response,10) > 0) {
+//                                 // For some browsers, if empty 'successRedirect' is undefined; for others,
+//                                 // 'successRedirect' is false.  Check for both.
+//                                 successRedirect = thisForm.attr('data-success-redirect');
+//                                 if (typeof successRedirect !== typeof undefined && successRedirect !== false && successRedirect !== "") {
+//                                     window.location = successRedirect;
+//                                 }
 
-                                mr.forms.resetForm(thisForm);
-                                mr.forms.showFormSuccess(formSuccess, formError, 1000, 5000, 500);
-                                mr.forms.captcha.resetWidgets();
-                            }
-                        }
-                        // If error text was returned, put the text in the .form-error div and show it.
-                        else {
-                            // Keep the current error text in a data attribute on the form
-                            formError.attr('original-error', formError.text());
-                            // Show the error with the returned error text.
-                            formError.text(response).stop(true).fadeIn(1000);
-                            formSuccess.stop(true).fadeOut(1000);
-                        }
-                    },
-                    error: function(errorObject, errorText, errorHTTP) {
-                        // Keep the current error text in a data attribute on the form
-                        formError.attr('original-error', formError.text());
-                        // Show the error with the returned error text.
-                        formError.text(errorHTTP).stop(true).fadeIn(1000);
-                        formSuccess.stop(true).fadeOut(1000);
-                        submitButton.removeClass('btn--loading');
-                    }
-                });
-            }
-        }
-        return false;
-    };
+//                                 mr.forms.resetForm(thisForm);
+//                                 mr.forms.showFormSuccess(formSuccess, formError, 1000, 5000, 500);
+//                                 mr.forms.captcha.resetWidgets();
+//                             }
+//                         }
+//                         // If error text was returned, put the text in the .form-error div and show it.
+//                         else {
+//                             // Keep the current error text in a data attribute on the form
+//                             formError.attr('original-error', formError.text());
+//                             // Show the error with the returned error text.
+//                             formError.text(response).stop(true).fadeIn(1000);
+//                             formSuccess.stop(true).fadeOut(1000);
+//                         }
+//                     },
+//                     error: function(errorObject, errorText, errorHTTP) {
+//                         // Keep the current error text in a data attribute on the form
+//                         formError.attr('original-error', formError.text());
+//                         // Show the error with the returned error text.
+//                         formError.text(errorHTTP).stop(true).fadeIn(1000);
+//                         formSuccess.stop(true).fadeOut(1000);
+//                         submitButton.removeClass('btn--loading');
+//                     }
+//                 });
+//             }
+//         }
+//         return false;
+//     };
     
-    mr.forms.validateFields = function(form) {
-        var body = $(body),
-            error = false,
-            originalErrorMessage,
-            name,
-            thisElement;
+//     mr.forms.validateFields = function(form) {
+//         var body = $(body),
+//             error = false,
+//             originalErrorMessage,
+//             name,
+//             thisElement;
 
-            form = $(form);
-
-
+//             form = $(form);
 
 
-        form.find('.validate-required[type="checkbox"]').each(function() {
-            var checkbox = $(this);
-            if (!$('[name="' + $(this).attr('name') + '"]:checked').length) {
-                error = 1;
-                name = $(this).attr('data-name') ||  'check';
-                checkbox.parent().addClass('field-error');
-                //body.find('.form-error').text('Please tick at least one ' + name + ' box.');
-            }
-        });
 
-        form.find('.validate-required, .required, [required]').not('input[type="checkbox"]').each(function() {
-            if ($(this).val() === '') {
-                $(this).addClass('field-error');
-                error = 1;
-            } else {
-                $(this).removeClass('field-error');
-            }
-        });
 
-        form.find('.validate-email, .email, [name*="cm-"][type="email"]').each(function() {
-            if (!(/(.+)@(.+){2,}\.(.+){2,}/.test($(this).val()))) {
-                $(this).addClass('field-error');
-                error = 1;
-            } else {
-                $(this).removeClass('field-error');
-            }
-        });
+//         form.find('.validate-required[type="checkbox"]').each(function() {
+//             var checkbox = $(this);
+//             if (!$('[name="' + $(this).attr('name') + '"]:checked').length) {
+//                 error = 1;
+//                 name = $(this).attr('data-name') ||  'check';
+//                 checkbox.parent().addClass('field-error');
+//                 //body.find('.form-error').text('Please tick at least one ' + name + ' box.');
+//             }
+//         });
 
-        form.find('.validate-number-dash').each(function() {
-            if (!(/^[0-9][0-9-]+[0-9]$/.test($(this).val()))) {
-                $(this).addClass('field-error');
-                error = 1;
-            } else {
-                $(this).removeClass('field-error');
-            }
-        });
+//         form.find('.validate-required, .required, [required]').not('input[type="checkbox"]').each(function() {
+//             if ($(this).val() === '') {
+//                 $(this).addClass('field-error');
+//                 error = 1;
+//             } else {
+//                 $(this).removeClass('field-error');
+//             }
+//         });
 
-        // Validate recaptcha
-        if(form.find('div.recaptcha').length && typeof form.attr('data-recaptcha-sitekey') !== typeof undefined){
-            thisElement = $(form.find('div.recaptcha'));
+//         form.find('.validate-email, .email, [name*="cm-"][type="email"]').each(function() {
+//             if (!(/(.+)@(.+){2,}\.(.+){2,}/.test($(this).val()))) {
+//                 $(this).addClass('field-error');
+//                 error = 1;
+//             } else {
+//                 $(this).removeClass('field-error');
+//             }
+//         });
+
+//         form.find('.validate-number-dash').each(function() {
+//             if (!(/^[0-9][0-9-]+[0-9]$/.test($(this).val()))) {
+//                 $(this).addClass('field-error');
+//                 error = 1;
+//             } else {
+//                 $(this).removeClass('field-error');
+//             }
+//         });
+
+//         // Validate recaptcha
+//         if(form.find('div.recaptcha').length && typeof form.attr('data-recaptcha-sitekey') !== typeof undefined){
+//             thisElement = $(form.find('div.recaptcha'));
     
-            if(grecaptcha.getResponse(form.data('recaptchaWidgetID')) !== ""){
-                thisElement.removeClass('field-error');
-            }else{
-                thisElement.addClass('field-error');
-                error = 1;
-            }
-        }
+//             if(grecaptcha.getResponse(form.data('recaptchaWidgetID')) !== ""){
+//                 thisElement.removeClass('field-error');
+//             }else{
+//                 thisElement.addClass('field-error');
+//                 error = 1;
+//             }
+//         }
 
-        if (!form.find('.field-error').length) {
-            body.find('.form-error').fadeOut(1000);
-        }else{
+//         if (!form.find('.field-error').length) {
+//             body.find('.form-error').fadeOut(1000);
+//         }else{
             
-            var firstError = $(form).find('.field-error:first');
+//             var firstError = $(form).find('.field-error:first');
             
-            if(firstError.length){
-                $('html, body').stop(true).animate({
-                    scrollTop: (firstError.offset().top - 100)
-                }, 1200, function(){firstError.focus();});
-            }
-        }
+//             if(firstError.length){
+//                 $('html, body').stop(true).animate({
+//                     scrollTop: (firstError.offset().top - 100)
+//                 }, 1200, function(){firstError.focus();});
+//             }
+//         }
 
 
 
-        return error;
-    };
+//         return error;
+//     };
 
-    mr.forms.showFormSuccess = function(formSuccess, formError, fadeOutError, wait, fadeOutSuccess){
+//     mr.forms.showFormSuccess = function(formSuccess, formError, fadeOutError, wait, fadeOutSuccess){
         
-        formSuccess.stop(true).fadeIn(fadeOutError);
+//         formSuccess.stop(true).fadeIn(fadeOutError);
 
-        formError.stop(true).fadeOut(fadeOutError);
-        setTimeout(function() {
-            formSuccess.stop(true).fadeOut(fadeOutSuccess);
-        }, wait);
-    };
+//         formError.stop(true).fadeOut(fadeOutError);
+//         setTimeout(function() {
+//             formSuccess.stop(true).fadeOut(fadeOutSuccess);
+//         }, wait);
+//     };
 
-    mr.forms.showFormError = function(formSuccess, formError, fadeOutSuccess, wait, fadeOutError){
+//     mr.forms.showFormError = function(formSuccess, formError, fadeOutSuccess, wait, fadeOutError){
         
-        formError.stop(true).fadeIn(fadeOutSuccess);
+//         formError.stop(true).fadeIn(fadeOutSuccess);
 
-        formSuccess.stop(true).fadeOut(fadeOutSuccess);
-        setTimeout(function() {
-            formError.stop(true).fadeOut(fadeOutError);
-        }, wait);
-    };
+//         formSuccess.stop(true).fadeOut(fadeOutSuccess);
+//         setTimeout(function() {
+//             formError.stop(true).fadeOut(fadeOutError);
+//         }, wait);
+//     };
 
-    // Reset form to empty/default state.
-    mr.forms.resetForm = function(form){
-        form = $(form);
-        form.get(0).reset();
-        form.find('.input-radio, .input-checkbox').removeClass('checked');
-        form.find('[data-default-value]').filter('[type="text"],[type="number"],[type="email"],[type="url"],[type="search"],[type="tel"]').each(function(){
-            var elem = jQuery(this);
-            elem.val(elem.attr('data-default-value'));
-        });
+//     // Reset form to empty/default state.
+//     mr.forms.resetForm = function(form){
+//         form = $(form);
+//         form.get(0).reset();
+//         form.find('.input-radio, .input-checkbox').removeClass('checked');
+//         form.find('[data-default-value]').filter('[type="text"],[type="number"],[type="email"],[type="url"],[type="search"],[type="tel"]').each(function(){
+//             var elem = jQuery(this);
+//             elem.val(elem.attr('data-default-value'));
+//         });
 
-    };
+//     };
 
-    // Defined on the window scope as the recaptcha js api seems not to be able to call function in mr scope
-    window.mrFormsCaptchaInit = function(){
-        mr.forms.captcha.renderWidgets();
-    };
+//     // Defined on the window scope as the recaptcha js api seems not to be able to call function in mr scope
+//     window.mrFormsCaptchaInit = function(){
+//         mr.forms.captcha.renderWidgets();
+//     };
 
-    mr.forms.captcha.renderWidgets = function(){
-        mr.forms.captcha.widgets.forEach(function(widget){
-            if(widget.element.innerHTML.replace(/[\s\xA0]+/g,'') === ''){
-                widget.id = grecaptcha.render(widget.element, {
-                    'sitekey' : mr.forms.captcha.sitekey,
-                    'theme' : widget.theme,
-                    'size' : widget.size,
-                    'callback' : mr.forms.captcha.setHuman
-                });
-                widget.parentForm.data('recaptchaWidgetID', widget.id);
-            }
-        });
-    };
+//     mr.forms.captcha.renderWidgets = function(){
+//         mr.forms.captcha.widgets.forEach(function(widget){
+//             if(widget.element.innerHTML.replace(/[\s\xA0]+/g,'') === ''){
+//                 widget.id = grecaptcha.render(widget.element, {
+//                     'sitekey' : mr.forms.captcha.sitekey,
+//                     'theme' : widget.theme,
+//                     'size' : widget.size,
+//                     'callback' : mr.forms.captcha.setHuman
+//                 });
+//                 widget.parentForm.data('recaptchaWidgetID', widget.id);
+//             }
+//         });
+//     };
 
-    mr.forms.captcha.resetWidgets = function(){
-        mr.forms.captcha.widgets.forEach(function(widget){
-            grecaptcha.reset(widget.id);
-        });
-    };
+//     mr.forms.captcha.resetWidgets = function(){
+//         mr.forms.captcha.widgets.forEach(function(widget){
+//             grecaptcha.reset(widget.id);
+//         });
+//     };
 
-    mr.forms.captcha.setHuman = function(){
-        jQuery('div.recaptcha.field-error').removeClass('field-error');
-    };
+//     mr.forms.captcha.setHuman = function(){
+//         jQuery('div.recaptcha.field-error').removeClass('field-error');
+//     };
 
-    mr.components.documentReadyDeferred.push(mr.forms.documentReady);
-    return mr;
+//     mr.components.documentReadyDeferred.push(mr.forms.documentReady);
+//     return mr;
 
-}(mr, jQuery, window, document));
+// }(mr, jQuery, window, document));
 
 //////////////// Granim
 mr = (function (mr, $, window, document){
