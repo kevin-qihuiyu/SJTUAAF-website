@@ -1940,343 +1940,343 @@ mr = (function (mr, $, window, document){
 
 }(mr, jQuery, window, document));
 
-//////////////// Newsletter Providers
-mr = (function (mr, $, window, document){
-    "use strict";
+// //////////////// Newsletter Providers
+// mr = (function (mr, $, window, document){
+//     "use strict";
     
-    mr.newsletters = mr.newsletters || {};
+//     mr.newsletters = mr.newsletters || {};
 
-    mr.newsletters.documentReady = function($){
+//     mr.newsletters.documentReady = function($){
   
-  	var form,checkbox,label,id,parent,radio;
+//   	var form,checkbox,label,id,parent,radio;
     
-    // Treat Campaign Monitor forms
-    $('form[action*="createsend.com"]').each(function(){
-    	form = $(this);
+//     // Treat Campaign Monitor forms
+//     $('form[action*="createsend.com"]').each(function(){
+//     	form = $(this);
 
-        // Override browser validation and allow us to use our own
-        form.attr('novalidate', 'novalidate');
+//         // Override browser validation and allow us to use our own
+//         form.attr('novalidate', 'novalidate');
 
-    	// Give each text input a placeholder value
+//     	// Give each text input a placeholder value
 
-    	if(!form.is('.form--no-placeholders')){
-            form.find('input:not([checkbox]):not([radio])').each(function(){
-                var $input = $(this);
-                if(typeof $input.attr('placeholder') !== typeof undefined){
-                    if($input.attr('placeholder') === ""){
-                        if($input.siblings('label').length){
-                            $input.attr('placeholder', $input.siblings('label').first().text());
-                            if(form.is('.form--no-labels')){   
-                                $input.siblings('label').first().remove();
-                            }
-                        }
-                    }
-                }else if($input.siblings('label').length){
-                    $input.attr('placeholder', $input.siblings('label').first().text()); 
-                    if(form.is('.form--no-labels')){
-                        $input.siblings('label').first().remove();
-                    }
-                }
-                if($input.parent().is('p')){
-                    $input.unwrap();
-                }
-            });
-        }else{
-            form.find('input[placeholder]').removeAttr('placeholder');
-        }
+//     	if(!form.is('.form--no-placeholders')){
+//             form.find('input:not([checkbox]):not([radio])').each(function(){
+//                 var $input = $(this);
+//                 if(typeof $input.attr('placeholder') !== typeof undefined){
+//                     if($input.attr('placeholder') === ""){
+//                         if($input.siblings('label').length){
+//                             $input.attr('placeholder', $input.siblings('label').first().text());
+//                             if(form.is('.form--no-labels')){   
+//                                 $input.siblings('label').first().remove();
+//                             }
+//                         }
+//                     }
+//                 }else if($input.siblings('label').length){
+//                     $input.attr('placeholder', $input.siblings('label').first().text()); 
+//                     if(form.is('.form--no-labels')){
+//                         $input.siblings('label').first().remove();
+//                     }
+//                 }
+//                 if($input.parent().is('p')){
+//                     $input.unwrap();
+//                 }
+//             });
+//         }else{
+//             form.find('input[placeholder]').removeAttr('placeholder');
+//         }
 
 
-    	// Wrap select elements in template code
+//     	// Wrap select elements in template code
 
-    	form.find('select').wrap('<div class="input-select"></div>');
+//     	form.find('select').wrap('<div class="input-select"></div>');
 
-    	// Wrap radios elements in template code
+//     	// Wrap radios elements in template code
 
-    	form.find('input[type="radio"]').wrap('<div class="input-radio"></div>');
+//     	form.find('input[type="radio"]').wrap('<div class="input-radio"></div>');
 
-    	// Wrap checkbox elements in template code
+//     	// Wrap checkbox elements in template code
 
-    	form.find('input[type="checkbox"]').each(function(){
-    		checkbox = $(this);
-    		id = checkbox.attr('id');
-    		label = form.find('label[for='+id+']');
-            if(!label.length){
-                label = $('<label for="'+id+'"></label>');
-            }
+//     	form.find('input[type="checkbox"]').each(function(){
+//     		checkbox = $(this);
+//     		id = checkbox.attr('id');
+//     		label = form.find('label[for='+id+']');
+//             if(!label.length){
+//                 label = $('<label for="'+id+'"></label>');
+//             }
     		
-    		checkbox.before('<div class="input-checkbox" data-id="'+id+'"></div>');
-    		$('.input-checkbox[data-id="'+id+'"]').prepend(checkbox);
-    		$('.input-checkbox[data-id="'+id+'"]').prepend(label);
-    	});
+//     		checkbox.before('<div class="input-checkbox" data-id="'+id+'"></div>');
+//     		$('.input-checkbox[data-id="'+id+'"]').prepend(checkbox);
+//     		$('.input-checkbox[data-id="'+id+'"]').prepend(label);
+//     	});
 
-    	form.find('button[type="submit"]').each(function(){
-            var button = $(this);
-            button.addClass('btn');
-            if(button.parent().is('p')){
-                button.unwrap();
-            }
-        });
+//     	form.find('button[type="submit"]').each(function(){
+//             var button = $(this);
+//             button.addClass('btn');
+//             if(button.parent().is('p')){
+//                 button.unwrap();
+//             }
+//         });
         
-        form.find('[required]').attr('required', 'required').addClass('validate-required');
+//         form.find('[required]').attr('required', 'required').addClass('validate-required');
 
-        form.addClass('form--active');
+//         form.addClass('form--active');
 
-        mr.newsletters.prepareAjaxAction(form);
+//         mr.newsletters.prepareAjaxAction(form);
 
 
-    });
+//     });
 
-    // Treat MailChimp forms
-    $('form[action*="list-manage.com"]').each(function(){
-    	form = $(this);
+//     // Treat MailChimp forms
+//     $('form[action*="list-manage.com"]').each(function(){
+//     	form = $(this);
 
-        // Override browser validation and allow us to use our own
-        form.attr('novalidate', 'novalidate');
+//         // Override browser validation and allow us to use our own
+//         form.attr('novalidate', 'novalidate');
 
-    	// Give each text input a placeholder value
-        if(!form.is('.form--no-placeholders')){
-        	form.find('input:not([checkbox]):not([radio])').each(function(){
-        		var $input = $(this);
-                if(typeof $input.attr('placeholder') !== typeof undefined){
-                    if($input.attr('placeholder') === ""){
-                        if($input.siblings('label').length){
-                            $input.attr('placeholder', $input.siblings('label').first().text());
-                            if(form.is('.form--no-labels')){   
-                                $input.siblings('label').first().remove();
-                            }
-                        }
-                    }
-                }else if($input.siblings('label').length){
-                    $input.attr('placeholder', $input.siblings('label').first().text()); 
-                    if(form.is('.form--no-labels')){
-                        $input.siblings('label').first().remove();
-                    }
-                }
-        	});
-        }else{
-            form.find('input[placeholder]').removeAttr('placeholder');
-        }
+//     	// Give each text input a placeholder value
+//         if(!form.is('.form--no-placeholders')){
+//         	form.find('input:not([checkbox]):not([radio])').each(function(){
+//         		var $input = $(this);
+//                 if(typeof $input.attr('placeholder') !== typeof undefined){
+//                     if($input.attr('placeholder') === ""){
+//                         if($input.siblings('label').length){
+//                             $input.attr('placeholder', $input.siblings('label').first().text());
+//                             if(form.is('.form--no-labels')){   
+//                                 $input.siblings('label').first().remove();
+//                             }
+//                         }
+//                     }
+//                 }else if($input.siblings('label').length){
+//                     $input.attr('placeholder', $input.siblings('label').first().text()); 
+//                     if(form.is('.form--no-labels')){
+//                         $input.siblings('label').first().remove();
+//                     }
+//                 }
+//         	});
+//         }else{
+//             form.find('input[placeholder]').removeAttr('placeholder');
+//         }
 
-        if(form.is('.form--no-labels')){
-            form.find('input:not([checkbox]):not([radio])').each(function(){
-                var $input = $(this);
-                if($input.siblings('label').length){
-                    $input.siblings('label').first().remove();
-                }
-            });
-        }
+//         if(form.is('.form--no-labels')){
+//             form.find('input:not([checkbox]):not([radio])').each(function(){
+//                 var $input = $(this);
+//                 if($input.siblings('label').length){
+//                     $input.siblings('label').first().remove();
+//                 }
+//             });
+//         }
 
-    	// Wrap select elements in template code
+//     	// Wrap select elements in template code
 
-    	form.find('select').wrap('<div class="input-select"></div>');
+//     	form.find('select').wrap('<div class="input-select"></div>');
 
-    	// Wrap checboxes elements in template code
+//     	// Wrap checboxes elements in template code
 
-    	form.find('input[type="checkbox"]').each(function(){
-    		checkbox = jQuery(this);
-    		parent = checkbox.parent();
-    		label = parent.find('label');
-            if(!label.length){
-                label = jQuery('<label>');
-            }
-    		checkbox.before('<div class="input-checkbox"></div>');
-    		parent.find('.input-checkbox').append(checkbox);
-    		parent.find('.input-checkbox').append(label);
-    	});
+//     	form.find('input[type="checkbox"]').each(function(){
+//     		checkbox = jQuery(this);
+//     		parent = checkbox.parent();
+//     		label = parent.find('label');
+//             if(!label.length){
+//                 label = jQuery('<label>');
+//             }
+//     		checkbox.before('<div class="input-checkbox"></div>');
+//     		parent.find('.input-checkbox').append(checkbox);
+//     		parent.find('.input-checkbox').append(label);
+//     	});
 
-    	// Wrap radio elements in template code
+//     	// Wrap radio elements in template code
 
-    	form.find('input[type="radio"]').each(function(){
-    		radio = jQuery(this);
-    		parent = radio.closest('li');
-    		label = parent.find('label');
-            if(!label.length){
-                label = jQuery('<label>');
-            }
-    		radio.before('<div class="input-radio"></div>');
-    		parent.find('.input-radio').prepend(radio);
-    		parent.find('.input-radio').prepend(label);
-    	});
+//     	form.find('input[type="radio"]').each(function(){
+//     		radio = jQuery(this);
+//     		parent = radio.closest('li');
+//     		label = parent.find('label');
+//             if(!label.length){
+//                 label = jQuery('<label>');
+//             }
+//     		radio.before('<div class="input-radio"></div>');
+//     		parent.find('.input-radio').prepend(radio);
+//     		parent.find('.input-radio').prepend(label);
+//     	});
 
-        // Convert MailChimp input[type="submit"] to div.button
+//         // Convert MailChimp input[type="submit"] to div.button
 
-        form.find('input[type="submit"]').each(function(){
-            var submit = $(this);
+//         form.find('input[type="submit"]').each(function(){
+//             var submit = $(this);
             
-            var newButton = jQuery('<button/>').attr('type','submit').attr('class', submit.attr('class')).addClass('btn').text(submit.attr('value'));
+//             var newButton = jQuery('<button/>').attr('type','submit').attr('class', submit.attr('class')).addClass('btn').text(submit.attr('value'));
             
-            if(submit.parent().is('div.clear')){
-                submit.unwrap();
-            }
+//             if(submit.parent().is('div.clear')){
+//                 submit.unwrap();
+//             }
 
-            newButton.insertBefore(submit);
-            submit.remove();
-        });
+//             newButton.insertBefore(submit);
+//             submit.remove();
+//         });
 
-        form.find('input').each(function(){
-            var input = $(this);
-            if(input.hasClass('required')){
-                input.removeClass('required').addClass('validate-required');
-            }
-        });
+//         form.find('input').each(function(){
+//             var input = $(this);
+//             if(input.hasClass('required')){
+//                 input.removeClass('required').addClass('validate-required');
+//             }
+//         });
 
-        form.find('input[type="email"]').removeClass('email').addClass('validate-email');
+//         form.find('input[type="email"]').removeClass('email').addClass('validate-email');
 
-        form.find('#mce-responses').remove();
+//         form.find('#mce-responses').remove();
 
-        form.find('.mc-field-group').each(function(){
-            $(this).children().first().unwrap();
-        });
+//         form.find('.mc-field-group').each(function(){
+//             $(this).children().first().unwrap();
+//         });
 
-        form.find('[required]').attr('required', 'required').addClass('validate-required');
+//         form.find('[required]').attr('required', 'required').addClass('validate-required');
 
-        form.addClass('form--active');
+//         form.addClass('form--active');
 
-        mr.newsletters.prepareAjaxAction(form);
+//         mr.newsletters.prepareAjaxAction(form);
 
-    }); 
+//     }); 
 
-	// Reinitialize the forms so interactions work as they should
+// 	// Reinitialize the forms so interactions work as they should
 
-	mr.forms.documentReady(mr.setContext('form.form--active'));
+// 	mr.forms.documentReady(mr.setContext('form.form--active'));
 		
-  };
+//   };
 
-  mr.newsletters.prepareAjaxAction = function(form){
-        var action = $(form).attr('action');
+//   mr.newsletters.prepareAjaxAction = function(form){
+//         var action = $(form).attr('action');
 
-        // Alter action for a Mail Chimp-compatible ajax request url.
-        if(/list-manage\.com/.test(action)){
-           action = action.replace('/post?', '/post-json?') + "&c=?";
-           if(action.substr(0,2) === "//"){
-               action = 'http:' + action;
-           }
-        }
+//         // Alter action for a Mail Chimp-compatible ajax request url.
+//         if(/list-manage\.com/.test(action)){
+//            action = action.replace('/post?', '/post-json?') + "&c=?";
+//            if(action.substr(0,2) === "//"){
+//                action = 'http:' + action;
+//            }
+//         }
 
-        // Alter action for a Campaign Monitor-compatible ajax request url.
-        if(/createsend\.com/.test(action)){
-           action = action + '?callback=?';
-        }
+//         // Alter action for a Campaign Monitor-compatible ajax request url.
+//         if(/createsend\.com/.test(action)){
+//            action = action + '?callback=?';
+//         }
 
-        // Set action on the form
-        $(form).attr('action', action);
+//         // Set action on the form
+//         $(form).attr('action', action);
 
-    };
+//     };
 
 
 
-  mr.components.documentReady.push(mr.newsletters.documentReady);
-  return mr;
+//   mr.components.documentReady.push(mr.newsletters.documentReady);
+//   return mr;
 
-}(mr, jQuery, window, document));
+// }(mr, jQuery, window, document));
 
-//////////////// Notifications
-mr = (function (mr, $, window, document){
-    "use strict";
+// //////////////// Notifications
+// mr = (function (mr, $, window, document){
+//     "use strict";
     
-    mr.notifications = mr.notifications || {};
+//     mr.notifications = mr.notifications || {};
 
-    mr.notifications.documentReady = function($){
+//     mr.notifications.documentReady = function($){
         
-        $('.notification').each(function(){
-            var notification = $(this);
-            if(!notification.find('.notification-close').length){
-                notification.append('<div class="notification-close-cross notification-close"></div>');
-            }
-        });
+//         $('.notification').each(function(){
+//             var notification = $(this);
+//             if(!notification.find('.notification-close').length){
+//                 notification.append('<div class="notification-close-cross notification-close"></div>');
+//             }
+//         });
     
 
-        $('.notification[data-autoshow]').each(function(){
-            var notification = $(this);
-            var millisecondsDelay = parseInt(notification.attr('data-autoshow'),10);
+//         $('.notification[data-autoshow]').each(function(){
+//             var notification = $(this);
+//             var millisecondsDelay = parseInt(notification.attr('data-autoshow'),10);
 
-            // If this notification has a cookie attribute, check to see if a cookie is set, and if so, don't show it.
-            if(typeof notification.attr('data-cookie') !== typeof undefined){
-                if(!mr.cookies.hasItem(notification.attr('data-cookie'))){
-                    mr.notifications.showNotification(notification, millisecondsDelay);
-                }
-            }else{
-                mr.notifications.showNotification(notification, millisecondsDelay);
-            }
-        });
+//             // If this notification has a cookie attribute, check to see if a cookie is set, and if so, don't show it.
+//             if(typeof notification.attr('data-cookie') !== typeof undefined){
+//                 if(!mr.cookies.hasItem(notification.attr('data-cookie'))){
+//                     mr.notifications.showNotification(notification, millisecondsDelay);
+//                 }
+//             }else{
+//                 mr.notifications.showNotification(notification, millisecondsDelay);
+//             }
+//         });
 
-        $('[data-notification-link]:not(.notification)').on('click', function(){
-            var notificationID = jQuery(this).attr('data-notification-link');
-            var notification = $('.notification[data-notification-link="'+notificationID+'"]');
-            jQuery('.notification--reveal').addClass('notification--dismissed');
-            notification.removeClass('notification--dismissed');
-            mr.notifications.showNotification(notification, 0);
-            return false;
-        });
+//         $('[data-notification-link]:not(.notification)').on('click', function(){
+//             var notificationID = jQuery(this).attr('data-notification-link');
+//             var notification = $('.notification[data-notification-link="'+notificationID+'"]');
+//             jQuery('.notification--reveal').addClass('notification--dismissed');
+//             notification.removeClass('notification--dismissed');
+//             mr.notifications.showNotification(notification, 0);
+//             return false;
+//         });
 
-        $('.notification-close').on('click', function(){
-            var closeButton = jQuery(this);
-            // Pass the closeNotification function a reference to the close button
-            mr.notifications.closeNotification(closeButton);
+//         $('.notification-close').on('click', function(){
+//             var closeButton = jQuery(this);
+//             // Pass the closeNotification function a reference to the close button
+//             mr.notifications.closeNotification(closeButton);
 
-            if(closeButton.attr('href') === '#'){
-                return false;
-            }
-        });
+//             if(closeButton.attr('href') === '#'){
+//                 return false;
+//             }
+//         });
 
-        $('.notification .inner-link').on('click', function(){
-            var notificationLink = jQuery(this).closest('.notification').attr('data-notification-link');
-            mr.notifications.closeNotification(notificationLink);
-        });
+//         $('.notification .inner-link').on('click', function(){
+//             var notificationLink = jQuery(this).closest('.notification').attr('data-notification-link');
+//             mr.notifications.closeNotification(notificationLink);
+//         });
     
-    };
+//     };
 
 
-    mr.notifications.showNotification = function(notification, millisecondsDelay){
-        var $notification = jQuery(notification),
-            delay         = (typeof millisecondsDelay !== typeof undefined) ? (1*millisecondsDelay) : 0,
-            openEvent     = document.createEvent('Event');
+//     mr.notifications.showNotification = function(notification, millisecondsDelay){
+//         var $notification = jQuery(notification),
+//             delay         = (typeof millisecondsDelay !== typeof undefined) ? (1*millisecondsDelay) : 0,
+//             openEvent     = document.createEvent('Event');
             
-        setTimeout(function(){
-            openEvent.initEvent('notificationOpened.notifications.mr', true, true);
-            $notification.addClass('notification--reveal').trigger('notificationOpened.notifications.mr').get(0).dispatchEvent(openEvent);
-            $notification.closest('nav').addClass('notification--reveal');
-            if($notification.find('input').length){
-                $notification.find('input').first().focus();
-            }
+//         setTimeout(function(){
+//             openEvent.initEvent('notificationOpened.notifications.mr', true, true);
+//             $notification.addClass('notification--reveal').trigger('notificationOpened.notifications.mr').get(0).dispatchEvent(openEvent);
+//             $notification.closest('nav').addClass('notification--reveal');
+//             if($notification.find('input').length){
+//                 $notification.find('input').first().focus();
+//             }
             
 
 
-        },delay);
-        // If notification has autohide attribute, set a timeout 
-        // for the autohide time plus the original delay time in case notification was called
-        // on page load
-        if(notification.is('[data-autohide]')){
-            var hideDelay = parseInt(notification.attr('data-autohide'),10);
-            setTimeout(function(){
-                mr.notifications.closeNotification(notification);
-            },hideDelay+delay);
-        }
-    };
+//         },delay);
+//         // If notification has autohide attribute, set a timeout 
+//         // for the autohide time plus the original delay time in case notification was called
+//         // on page load
+//         if(notification.is('[data-autohide]')){
+//             var hideDelay = parseInt(notification.attr('data-autohide'),10);
+//             setTimeout(function(){
+//                 mr.notifications.closeNotification(notification);
+//             },hideDelay+delay);
+//         }
+//     };
 
-    mr.notifications.closeNotification = function(notification){
-        var $notification = jQuery(notification),
-            closeEvent    = document.createEvent('Event');
-        notification = $notification.is('.notification') ? 
-                       $notification :
-                       $notification.is('.notification-close') ? 
-                       $notification.closest('.notification') : 
-                       $('.notification[data-notification-link="'+notification+'"]');
+//     mr.notifications.closeNotification = function(notification){
+//         var $notification = jQuery(notification),
+//             closeEvent    = document.createEvent('Event');
+//         notification = $notification.is('.notification') ? 
+//                        $notification :
+//                        $notification.is('.notification-close') ? 
+//                        $notification.closest('.notification') : 
+//                        $('.notification[data-notification-link="'+notification+'"]');
         
-        closeEvent.initEvent('notificationClosed.notifications.mr', true, true);
-        notification.addClass('notification--dismissed').trigger('notificationClosed.notifications.mr').get(0).dispatchEvent(closeEvent);
-        notification.closest('nav').removeClass('notification--reveal');
+//         closeEvent.initEvent('notificationClosed.notifications.mr', true, true);
+//         notification.addClass('notification--dismissed').trigger('notificationClosed.notifications.mr').get(0).dispatchEvent(closeEvent);
+//         notification.closest('nav').removeClass('notification--reveal');
 
-        // If this notification requires to be closed permanently using a cookie, set the cookie now.
-        if(typeof notification.attr('data-cookie') !== typeof undefined){
-            mr.cookies.setItem(notification.attr('data-cookie'), "true", Infinity, '/');
-        }
-    };
+//         // If this notification requires to be closed permanently using a cookie, set the cookie now.
+//         if(typeof notification.attr('data-cookie') !== typeof undefined){
+//             mr.cookies.setItem(notification.attr('data-cookie'), "true", Infinity, '/');
+//         }
+//     };
 
-    mr.components.documentReady.push(mr.notifications.documentReady);
-    return mr;
+//     mr.components.documentReady.push(mr.notifications.documentReady);
+//     return mr;
 
-}(mr, jQuery, window, document));
+// }(mr, jQuery, window, document));
 
 //////////////// Parallax
 mr = (function (mr, $, window, document){
