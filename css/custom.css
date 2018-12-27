@@ -59,3 +59,13 @@ ul.tags li.blue {
     color: #00aeff;
     border-color: #00aeff;
 }
+
+#cover-mobile {
+    position: relative;
+    height: 55vh;
+    width: 100%;
+    background-image: 
+    linear-gradient(to bottom right,rgba(0, 47, 75, .5),rgba(220, 66, 37, .5)),
+    url(../img-custom/home/collage-mobile-2.jpg);
+    background-size: 100% auto;
+}
