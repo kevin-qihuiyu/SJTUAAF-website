@@ -76,11 +76,11 @@ ul.tags li.blue {
         display: block;
     }
 }
-/* 
-.menu-horizontal li a{
-    font-size: 18px;
-} */
 
+.bar-1 .menu-horizontal > li > .dropdown__trigger,
+.bar-1 .menu-horizontal > li > a {
+  font-size: 1.0em;
+}
 
 p + a:not(.btn) {
     font-size: 1.1em;
