@@ -94,21 +94,22 @@
                             <div class="row">
                                 <div class="boxed boxed--border">
                                     <form class="text-left form-email row" 
+                                    method="POST" data-netlify="true"
                                     data-success="感谢您的申请。我们将会很快给您回信。" 
                                     data-error="请正确填写表单。">
                                         <div class="col-md-12 text-center"><h3>--您的联系方式--</h3></div>
                                         <div class="col-md-6"> <span>您的名字(必填):</span> <input type="text" name="name" class="validate-required"> </div>
                                         <div class="col-md-6"> <span>您的交大毕业年份</span> <input type="date" name="year" class="validate-required"> </div>
                                         <div class="col-md-6"> <span>您的当前学校/单位:</span> <input type="text" name="company" class="validate-required"> </div>
-                                        <div class="col-md-6"> <span>您的专业/职业:</span> <input type="text" name="company" class="validate-required"> </div>
+                                        <div class="col-md-6"> <span>您的专业/职业:</span> <input type="text" name="profession" class="validate-required"> </div>
                                         <div class="col-md-6"> <span>Email 邮件地址(必填):</span> <input type="email" name="email" class="validate-required validate-email"> </div>
                                         <div class="col-md-6"> <span>电话号码:</span> <input type="tel" name="phone" class="validate-required"> </div>
                                         
                                         <div class="col-md-12 text-center"><br><h3>--您的法国生活--</h3></div>
-                                        <div class="col-md-6"> <span>您的来法时间</span> <input type="date" name="year" class="validate-required"> </div>
+                                        <div class="col-md-6"> <span>您的来法时间</span> <input type="date" name="arrival" class="validate-required"> </div>
                                         <div class="col-md-6 form-group">
-                                            <label for="arrival">您在法国将要逗留的时间</label>
-                                            <select class="form-control form-control-lg" id="arrival">
+                                            <label for="stay">您在法国将要逗留的时间</label>
+                                            <select class="form-control form-control-lg" id="stay">
                                                 <option>少于半年</option>
                                                 <option>半年到一年</option>
                                                 <option>两年</option>
@@ -121,28 +122,28 @@
                                             <h5>法国最吸引您的是...</h5>
                                         </div>
                                         <div class="col-md-3 col-6 text-center"> <span class="block">欧洲大陆的悠久历史</span>
-                                            <div class="input-checkbox"> <input type="checkbox" name="design"> <label></label> </div>
+                                            <div class="input-checkbox"> <input type="checkbox" name="history"> <label></label> </div>
                                         </div>
                                         <div class="col-md-3 col-6 text-center"> <span class="block">浪漫与艺术之都</span>
-                                            <div class="input-checkbox"> <input type="checkbox" name="design"> <label></label> </div>
+                                            <div class="input-checkbox"> <input type="checkbox" name="art"> <label></label> </div>
                                         </div>
                                         <div class="col-md-3 col-6 text-center"> <span class="block">丰富多元的文化</span>
-                                            <div class="input-checkbox"> <input type="checkbox" name="design"> <label></label> </div>
+                                            <div class="input-checkbox"> <input type="checkbox" name="culture"> <label></label> </div>
                                         </div>
                                         <div class="col-md-3 col-6 text-center"> <span class="block">深厚的科学传统</span>
-                                            <div class="input-checkbox"> <input type="checkbox" name="dev"> <label></label> </div>
+                                            <div class="input-checkbox"> <input type="checkbox" name="science"> <label></label> </div>
                                         </div>
                                         <div class="col-md-3 col-6 text-center"> <span class="block">潮流时尚极致奢华</span>
                                             <div class="input-checkbox"> <input type="checkbox" name="brand"> <label></label> </div>
                                         </div>
                                         <div class="col-md-3 col-6 text-center"> <span class="block">让人垂涎的美酒佳肴</span>
-                                            <div class="input-checkbox"> <input type="checkbox" name="marketing"> <label></label> </div>
+                                            <div class="input-checkbox"> <input type="checkbox" name="food"> <label></label> </div>
                                         </div>
                                         <div class="col-md-3 col-6 text-center"> <span class="block">体育与运动</span>
-                                            <div class="input-checkbox"> <input type="checkbox" name="marketing"> <label></label> </div>
+                                            <div class="input-checkbox"> <input type="checkbox" name="sports"> <label></label> </div>
                                         </div>
                                         <div class="col-md-3 col-6 text-center"> <span class="block">游戏和虚拟世界</span>
-                                            <div class="input-checkbox"> <input type="checkbox" name="marketing"> <label></label> </div>
+                                            <div class="input-checkbox"> <input type="checkbox" name="gaming"> <label></label> </div>
                                         </div>
                                         <div class="col-md-12"> 
                                             <span>您平常喜欢做...</span> <textarea rows="3" name="hobby" class="validate-required">
@@ -151,8 +152,8 @@
 
                                         <div class="col-md-12 text-center"><br><h3>--选择您感兴趣的家庭--</h3></div>
                                         <div class="col-md-6 form-group">
-                                            <label for="exampleFormControlSelect2">您希望加入的家庭(选择一)</label>
-                                            <select class="form-control form-control-lg" id="exampleFormControlSelect2">
+                                            <label for="family1">您希望加入的家庭(选择一)</label>
+                                            <select class="form-control form-control-lg" id="family1">
                                                 <option>F01-骄大佳苑</option>
                                                 <option>F02-维生素C</option>
                                                 <option>F03-家庭名字3</option>
@@ -161,8 +162,8 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <label for="exampleFormControlSelect2">您希望加入的家庭(选择二)</label>
-                                            <select class="form-control form-control-lg" id="exampleFormControlSelect2">
+                                            <label for="family2">您希望加入的家庭(选择二)</label>
+                                            <select class="form-control form-control-lg" id="family2">
                                                 <option>F01-骄大佳苑</option>
                                                 <option>F02-维生素C</option>
                                                 <option>F03-家庭名字3</option>
