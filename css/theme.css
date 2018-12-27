@@ -4454,11 +4454,11 @@ hr[data-title]:before {
 p > .btn {
   text-decoration: none;
 }
-@media all and (max-width: 767px) {
+/* @media all and (max-width: 767px) {
   .btn:not(:last-child) {
     margin-bottom: 1.85714286em;
   }
-}
+} */
 .btn--icon {
   padding-left: 5.57142857em;
 }
