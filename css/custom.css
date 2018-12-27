@@ -34,3 +34,28 @@
 .div.text-center {
     text-align: center;
 }
+
+/* manage tag styles in family desciption */
+ul.tags{
+    list-style-type: none;
+}
+
+ul.tags li {
+    display: inline;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 10px 12px;
+    color:#a1a1a1;
+    border-color: #a1a1a1;
+}
+
+ul.tags li.red {
+    color: #ff8f8f;
+    border-color: #ff8f8f;
+}
+
+ul.tags li.blue {
+    color: #00aeff;
+    border-color: #00aeff;
+}
