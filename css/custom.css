@@ -60,6 +60,7 @@ ul.tags li.blue {
     border-color: #00aeff;
 }
 
+/* style for the mobile cover image */
 #cover-mobile {
     position: relative;
     height: 55vh;
