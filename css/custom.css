@@ -61,14 +61,14 @@ ul.tags li.blue {
     border-color: #00aeff;
 }
 
-/* style for the mobile cover image */
+/* style for the mobile cover image on family main*/
 #cover-mobile {
     position: relative;
     height: 55vh;
     width: 100%;
     background-image: 
-    linear-gradient(to bottom right,rgba(0, 47, 75, .5),rgba(220, 66, 37, .5)),
-    url(../img-custom/home/collage-mobile-2.jpg);
+        linear-gradient(to bottom right,rgba(0, 47, 75, .5),rgba(220, 66, 37, .5)),
+        url(../img-custom/home/collage-mobile-2.jpg);
     background-size: 100% auto;
     display: none;
 }
@@ -78,6 +78,26 @@ ul.tags li.blue {
         display: block;
     }
 }
+
+/* style for the mobile cover image on sjtu aaf main*/
+#cover-mobile-2 {
+    position: relative;
+    height: 250px;
+    width: 100%;
+    background-image: 
+        linear-gradient(to bottom right,rgba(0, 47, 75, .5),rgba(220, 66, 37, .5)),
+        url(../img-custom/index/portal.jpg);
+    background-size: 100% auto;
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    #cover-mobile-2 {
+        display: block;
+    }
+}
+
+
 
 .bar-1 .menu-horizontal > li > .dropdown__trigger,
 .bar-1 .menu-horizontal > li > a {
