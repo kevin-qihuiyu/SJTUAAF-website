@@ -1,4 +1,6 @@
-/*! Place your custom styles here */
+/*! Custom styles here */
+
+/* Style used to support different color for nav bar */
 .hamburger-toggle-white i {
     color: rgb(240, 240, 240);
 }
@@ -7,6 +9,7 @@
     background: #bdbdbd;
 }
 
+/* tunning background image  */
 .background-image-holder {
     position: absolute;
     height: 100%;
@@ -55,7 +58,7 @@
     text-align: center;
 }
 
-/* manage tag styles in family desciption */
+/* styles for tags in family desciption */
 ul.tags{
     list-style-type: none;
 }
@@ -81,7 +84,7 @@ ul.tags li.blue {
     border-color: #00aeff;
 }
 
-/* style for the mobile cover image on family main*/
+/* style for the mobile cover image on family home page*/
 #cover-mobile {
     position: relative;
     height: 55vh;
@@ -99,7 +102,7 @@ ul.tags li.blue {
     }
 }
 
-/* style for the mobile cover image on sjtu aaf main*/
+/* style for the mobile cover image on sjtu aaf index page*/
 #cover-mobile-2 {
     position: relative;
     height: 250px;
