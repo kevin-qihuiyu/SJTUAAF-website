@@ -25,6 +25,26 @@
     background-size: 100% !important;
 }
 
+/* #background-image-holder-tile {    
+    position: relative;
+    overflow: hidden;
+}
+
+#background-image-holder-tile:before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    opacity: .8;
+    top: -50%;
+    left: -50%;
+    z-index: -1;
+    background: url(../img-custom/logo/tile-2.png) 0 0 repeat;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+} */
+
+
 /* The following are used in page family description */
 .profile-img {
     height: 200px;
