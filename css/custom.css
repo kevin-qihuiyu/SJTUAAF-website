@@ -107,3 +107,7 @@ ul.tags li.blue {
 p + a:not(.btn) {
     font-size: 1.1em;
 }
+
+h2 + .btn, .h2 + .btn {
+    margin-top: 0;
+}
