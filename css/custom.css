@@ -1,5 +1,41 @@
 /*! Custom styles here */
 
+/* Fonts Optimized for mac/win Chinese users */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  /* font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif; */
+  font-family: PingFangSC-Light, Hiragino Sans GB, 
+        Helvetica, Tahoma, Arial, STXihei, “华文细黑”, 
+        “Microsoft YaHei”, “微软雅黑”, 
+        SimSun, “宋体”, Heiti, “黑体”, sans-serif
+}
+
+.btn {
+    font-family: PingFangSC-Light, Hiragino Sans GB, 
+        Helvetica, Tahoma, Arial, STXihei, “华文细黑”, 
+        “Microsoft YaHei”, “微软雅黑”, 
+        SimSun, “宋体”, Heiti, “黑体”, sans-serif
+}
+
+/*! -- Stack Bars -- */
+.menu-horizontal > li,
+.menu-vertical > li {
+  font-family: PingFangSC, Hiragino Sans GB, 
+        Helvetica, Tahoma, Arial, STXihei, “华文细黑”, 
+        “Microsoft YaHei”, “微软雅黑”, 
+        SimSun, “宋体”, Heiti, “黑体”, sans-serif
+}
+
 /* Style used to support different color for nav bar */
 .hamburger-toggle-white i {
     color: rgb(240, 240, 240);
