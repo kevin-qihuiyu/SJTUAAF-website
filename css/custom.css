@@ -17,14 +17,14 @@ h6,
   font-family: PingFangSC-Light, Hiragino Sans GB, 
         Helvetica, Tahoma, Arial, STXihei, “华文细黑”, 
         “Microsoft YaHei”, “微软雅黑”, 
-        SimSun, “宋体”, Heiti, “黑体”, sans-serif
+        Heiti, “黑体”, SimSun, “宋体”, sans-serif
 }
 
 .btn {
     font-family: PingFangSC-Light, Hiragino Sans GB, 
         Helvetica, Tahoma, Arial, STXihei, “华文细黑”, 
         “Microsoft YaHei”, “微软雅黑”, 
-        SimSun, “宋体”, Heiti, “黑体”, sans-serif
+        Heiti, “黑体”, SimSun, “宋体”, sans-serif
 }
 
 /*! -- Stack Bars -- */
@@ -33,7 +33,7 @@ h6,
   font-family: PingFangSC, Hiragino Sans GB, 
         Helvetica, Tahoma, Arial, STXihei, “华文细黑”, 
         “Microsoft YaHei”, “微软雅黑”, 
-        SimSun, “宋体”, Heiti, “黑体”, sans-serif
+        Heiti, “黑体”, SimSun, “宋体”, sans-serif
 }
 
 /* Style used to support different color for nav bar */
