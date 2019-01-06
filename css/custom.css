@@ -106,8 +106,8 @@ ul.tags li {
     border-radius: 5px;
     padding: 6px 12px;
     margin: 2px;
-    color:#a1a1a1;
-    border-color: #a1a1a1;
+    color: #00aeff;
+    border-color: #00aeff;
 }
 
 ul.tags li.red {
@@ -115,9 +115,14 @@ ul.tags li.red {
     border-color: #ff8f8f;
 }
 
-ul.tags li.blue {
-    color: #00aeff;
-    border-color: #00aeff;
+ul.tags li.gray {
+    color:#a1a1a1;
+    border-color: #a1a1a1;
+}
+
+ul.tags li.green {
+    color: green;
+    border-color: green;
 }
 
 /* style for the mobile cover image on family home page*/
