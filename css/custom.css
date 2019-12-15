@@ -1,5 +1,10 @@
 /*! Custom styles here */
 
+.post-image-label {
+    text-align: center; 
+    font-size: 1rem !important;
+}
+
 /* Fonts Optimized for mac/win Chinese users */
 h1,
 h2,
