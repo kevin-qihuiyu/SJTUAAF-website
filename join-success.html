@@ -11,7 +11,7 @@
         <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700" rel="stylesheet">
-
+        <script src="components/footer.js" type="text/javascript" defer></script>
     </head>
     <body data-smooth-scroll-offset="77">
         <div class="nav-container">
@@ -32,7 +32,6 @@
                 </div>
             </div>
             <!-- nav bar for larger screen -->
-            <!-- <nav id="menu1" class="bar bar-1 hidden-xs"> -->
             <nav id="menu1" class="bar bar-1 hidden-xs bar--absolute bar--transparent">
                 <div class="container">
                     <div class="row">
@@ -92,32 +91,7 @@
                     </a>
                 </div>
             </section>
-            <footer class="footer-3 text-center-xs space--xs">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6"> <img alt="Image" class="logo" src="img-custom/logo/sjtuaaf-logo-1-dark.png"></div>
-                        <div class="col-sm-6 text-right text-center-xs">
-                            <ul class="social-list list-inline list--hover">
-                                <li><i class="socicon socicon-google icon icon--xs"></i></li>
-                                <li><i class="socicon socicon-twitter icon icon--xs"></i></li>
-                                <li><i class="socicon socicon-facebook icon icon--xs"></i></li>
-                                <li><i class="socicon socicon-instagram icon icon--xs"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <span class="type--fine-print"> Design &amp; Code by <a href="mailto:qihui.yu91@gmail.com">qihui.yu</a> in Paris</span>
-                        </div>
-                        <div class="col-sm-6 text-right text-center-xs"> 
-                            <p class="type--fine-print">©<span class="update-year">2011-2020</span> 
-                                上海交通大学法国校友会
-                            </p> 
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
+            <footer-component></footer-component>
         <script src="js/jquery-3.1.1.min.js"></script>
         <script src="js/parallax.js"></script>
         <script src="js/smooth-scroll.min.js"></script>

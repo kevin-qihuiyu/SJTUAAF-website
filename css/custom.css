@@ -18,27 +18,17 @@ h6,
 .h4,
 .h5,
 .h6 {
-  /* font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif; */
-  font-family: PingFangSC-Light, Hiragino Sans GB, 
-        Helvetica, Tahoma, Arial, STXihei, “华文细黑”, 
-        “Microsoft YaHei”, “微软雅黑”, 
-        Heiti, “黑体”, SimSun, “宋体”, sans-serif
+    font-family: PingFangSC-Light, Helvetica
 }
 
 .btn {
-    font-family: PingFangSC-Light, Hiragino Sans GB, 
-        Helvetica, Tahoma, Arial, STXihei, “华文细黑”, 
-        “Microsoft YaHei”, “微软雅黑”, 
-        Heiti, “黑体”, SimSun, “宋体”, sans-serif
+    font-family: PingFangSC-Light, Helvetica
 }
 
 /*! -- Stack Bars -- */
 .menu-horizontal > li,
 .menu-vertical > li {
-  font-family: PingFangSC, Hiragino Sans GB, 
-        Helvetica, Tahoma, Arial, STXihei, “华文细黑”, 
-        “Microsoft YaHei”, “微软雅黑”, 
-        Heiti, “黑体”, SimSun, “宋体”, sans-serif
+  font-family: PingFangSC
 }
 
 /* Style used to support different color for nav bar */
@@ -68,25 +58,6 @@ h6,
 .background-image-holder.mobile {
     background-size: 100% !important;
 }
-
-/* #background-image-holder-tile {    
-    position: relative;
-    overflow: hidden;
-}
-
-#background-image-holder-tile:before {
-    content: "";
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    opacity: .8;
-    top: -50%;
-    left: -50%;
-    z-index: -1;
-    background: url(../img-custom/logo/tile-2.png) 0 0 repeat;
-    -webkit-transform: rotate(30deg);
-    transform: rotate(30deg);
-} */
 
 
 /* The following are used in page family description */

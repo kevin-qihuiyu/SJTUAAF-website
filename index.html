@@ -13,17 +13,7 @@
         <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700" rel="stylesheet">
-        <script
-            src="https://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous">
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                // $("#header").load("header.html");
-                $("#footer").load("footer.html");
-            });
-        </script>
+        <script src="components/footer.js" type="text/javascript" defer></script>
     </head>
     <body data-smooth-scroll-offset="77">
         <div class="nav-container">
@@ -79,7 +69,7 @@
                                 </ul>
                             </div>
                             <div class="bar__module">
-                                <a class="btn btn--sm btn--primary type--uppercase" href="./covid19.html"> <span class="btn__text">Lutter contre COVID-19</span> </a>
+                                <a class="btn btn--sm btn--primary type--uppercase" href="./blog/blog-post-0006-2020-04-03-covid-special.html"> <span class="btn__text">Lutter contre COVID-19</span> </a>
                             </div>
                         </div>
                     </div>
@@ -310,37 +300,7 @@
                     </div>
                 </div>
             </section>
-            <!-- <footer class="footer-3 text-center-xs space--xs">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6"> <img alt="Image" class="logo" src="img-custom/logo/sjtuaaf-logo-1-dark.png">
-                            <ul class="list-inline list--hover">
-                                <li> <a href="#"><span class="type--fine-print">contact@alumni.sjtu.fr</span></a> </li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6 text-right text-center-xs">
-                            <ul class="social-list list-inline list--hover">
-                                <li><i class="socicon socicon-google icon icon--xs"></i></li>
-                                <li><i class="socicon socicon-twitter icon icon--xs"></i></li>
-                                <li><i class="socicon socicon-facebook icon icon--xs"></i></li>
-                                <li><i class="socicon socicon-instagram icon icon--xs"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <span class="type--fine-print"> Design &amp; Code by <a href="mailto:qihui.yu91@gmail.com">qihui.yu</a> in Paris</span>
-                        </div>
-                        <div class="col-sm-6 text-right text-center-xs"> 
-                            <p class="type--fine-print">© 
-                                <span class="update-year">2011-2020</span> 
-                                上海交通大学法国校友会
-                            </p> 
-                        </div>
-                    </div>
-                </div>
-            </footer> -->
-            <div id="footer"></div>
+            <footer-component></footer-component>
         </div>
         <script src="js/jquery-3.1.1.min.js"></script>
         <script src="js/parallax.js"></script>
